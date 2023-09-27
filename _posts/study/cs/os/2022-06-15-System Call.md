@@ -2,8 +2,8 @@
 title: System Call은 무엇이고 무엇을 위해 쓰일까?
 author: jaeeun
 date: 2022-06-15 00:00:00 +0800
-categories: [Study, os-hardware]
-tags: [os-hardware]
+categories: [Study, Operating System]
+tags: [Operating System]
 render_with_liquid: false
 ---
 
