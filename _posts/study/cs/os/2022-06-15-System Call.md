@@ -7,7 +7,7 @@ tags: ["Operating System"]
 render_with_liquid: false
 ---
 
-스터디 Stacked-Book에서 실습과 그림으로 배우는 리눅스구조 책을 참고하여 학습 후 정리한 글입니다.
+스터디 Stacked-Book에서 실습과 그림으로 배우는 리눅스 구조 책을 참고하여 학습 후 정리한 글입니다.
 
 # System Call은 무엇이고 무엇을 위해 쓰일까?
 
