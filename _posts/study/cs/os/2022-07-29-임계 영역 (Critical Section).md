@@ -1,5 +1,5 @@
 ---
-title: Thread Safe
+title: 임계 영역 (Critical Section)
 author: jaeeun
 date: 2022-07-28 00:00:00 +0800
 categories: [Study, "Operating System"]
