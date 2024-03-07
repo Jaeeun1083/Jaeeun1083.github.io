@@ -15,7 +15,7 @@ render_with_liquid: false
 
 ### 사용자 모드와 커널 모드
 
-<img src ="https://user-images.githubusercontent.com/78838791/174520490-cf353949-e0f8-4a33-939f-1786b3955aab.png" width ="700px"/>
+<img src ="https://user-images.githubusercontent.com/78838791/174520490-cf353949-e0f8-4a33-939f-1786b3955aab.png" width ="700px" alt="사용자_커널모드"/>
 
 - **사용자 모드**에서 실행되는 코드는 할 수 있는 일이 제한된다.
   - 예를 들어 프로세스가 사용자 모드에서 실행 중이면 디스크 입출력 요청을 할 수 없도록 설정한다.
@@ -40,7 +40,7 @@ render_with_liquid: false
 - 모드 비트가 1(커널 모드)이면 CPU는 모든 메모리 영역에 접근 가능하고 모드 비트가 0(유저 모드)이면 CPU는 일부 메모리 영역에만 접근할 수 있다. 유저 모드에서는 커널 메모리에 직접 접근할 수 없으며, 자신의 주소 공간만 접근할 수 있다.
 - 이 비트는 CPU의 제어 레지스터에 저장되어 있다.
 
-<img src ="https://user-images.githubusercontent.com/78838791/176114508-efd6c3d6-ce15-4f7b-a6be-9a44fd351a82.png" width ="500px"/>
+<img src ="https://user-images.githubusercontent.com/78838791/176114508-efd6c3d6-ce15-4f7b-a6be-9a44fd351a82.png" width ="500px" alt="modebit"/>
 
 - CPU와 메모리 사이에 `MMU (Memory Management Unit)`는 **CPU에서 메모리로 가는 address 정보를 조사**한다.
 - 조사에 통과하면 **Instruction Fetch** 즉 instruction을 가져온다. instruction의 구조는 op-code와 operands로 구성된다. op-code를 통해 어떤 연산인지 확인한다.

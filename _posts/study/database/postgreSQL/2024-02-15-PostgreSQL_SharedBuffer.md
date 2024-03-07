@@ -18,7 +18,7 @@ Shared Buffer 를 구성하는 요소는 크게 4가지 (해시 테이블, 해�
 
 PostgreSQL은 메모리 내의 버퍼를 관리 (검색, 입력)하기 위해 해시 테이블을 사용하며, 해시 충돌 문제를 완화하기 위해 `Segmented 해시 테이블`을 사용한다.
 
-<img src="https://www.highgo.ca/wp-content/uploads/2021/01/dynamic-hash-table-1024x568.png" width="700PX">
+<img src="https://www.highgo.ca/wp-content/uploads/2021/01/dynamic-hash-table-1024x568.png" width="700PX" alt="Segmented 해시 테이블">
 
 - Segment : 해시 테이블을 논리적으로 나누는 단위이다.
 - Directory : N개로 나눈 각 세그먼트의 시작 위치를 가리키는 배열이다. 

@@ -1,6 +1,4 @@
-/*
-  The common styles
-*/
+/* The common styles */
 
 html {
   @media (prefers-color-scheme: light) {
@@ -73,52 +71,11 @@ img {
   height: auto;
   transition: all 0.35s ease-in-out;
 
-  &[data-src] {
-    &[data-lqip='true'] {
-      &.lazyload,
-      &.lazyloading {
-        -webkit-filter: blur(20px);
-        filter: blur(20px);
-      }
-    }
+  .blur & {
+    $blur: 20px;
 
-    &:not([data-lqip='true']) {
-      &.lazyload,
-      &.lazyloading {
-        background: var(--img-bg);
-      }
-
-      &.lazyloaded {
-        -webkit-animation: fade-in 0.35s ease-in;
-        animation: fade-in 0.35s ease-in;
-      }
-    }
-
-    &.shadow {
-      -webkit-filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
-      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.08));
-      box-shadow: none !important; /* cover the Bootstrap 4.6.1 styles */
-    }
-
-    @extend %img-caption;
-  }
-
-  @-webkit-keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    -webkit-filter: blur($blur);
+    filter: blur($blur);
   }
 }
 
@@ -126,6 +83,10 @@ blockquote {
   border-left: 5px solid var(--blockquote-border-color);
   padding-left: 1rem;
   color: var(--blockquote-text-color);
+
+  > p:last-child {
+    margin-bottom: 0;
+  }
 
   &[class^='prompt-'] {
     border-left: 0;
@@ -143,10 +104,6 @@ blockquote {
       margin-top: 0.4rem;
       text-rendering: auto;
       -webkit-font-smoothing: antialiased;
-    }
-
-    > p:last-child {
-      margin-bottom: 0;
     }
   }
 
@@ -172,13 +129,17 @@ kbd {
   box-shadow: inset 0 -2px 0 var(--kbd-wrap-color);
 }
 
+hr {
+  border-color: var(--main-border-color);
+  opacity: 1;
+}
+
 footer {
-  font-size: 0.8rem;
   background-color: var(--main-bg);
   height: $footer-height;
   border-top: 1px solid var(--main-border-color);
 
-  @extend %text-color;
+  @extend %text-xs;
 
   a {
     @extend %text-highlight;
@@ -188,8 +149,11 @@ footer {
     }
   }
 
+  em {
+    @extend %text-highlight;
+  }
+
   p {
-    line-height: 1.75;
     text-align: center;
     margin-bottom: 0;
   }
@@ -349,6 +313,31 @@ sup {
 
 /* --- post --- */
 
+.preview-img {
+  aspect-ratio: 40 / 21;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  @extend %rounded;
+
+  &:not(.no-bg) {
+    background: var(--img-bg);
+  }
+
+  img {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+
+    @extend %rounded;
+
+    @at-root #post-list & {
+      width: 100%;
+    }
+  }
+}
+
 .post-preview {
   @extend %rounded;
 
@@ -384,7 +373,6 @@ main {
   }
 
   p {
-    > img[data-src],
     > a.popup {
       &:not(.normal):not(.left):not(.right) {
         @include align-center;
@@ -402,7 +390,7 @@ main {
 }
 
 .post-meta {
-  font-size: 0.85rem;
+  @extend %text-sm;
 
   a {
     &:not([class]):hover {
@@ -538,14 +526,15 @@ main {
     background: var(--shimmer-bg);
     height: 100%;
     width: 100%;
-    -webkit-animation: shimmer 1s infinite;
-    animation: shimmer 1s infinite;
+    -webkit-animation: shimmer 1.3s infinite;
+    animation: shimmer 1.3s infinite;
   }
 
   @-webkit-keyframes shimmer {
     0% {
       transform: translateX(-100%);
     }
+
     100% {
       transform: translateX(100%);
     }
@@ -555,6 +544,7 @@ main {
     0% {
       transform: translateX(-100%);
     }
+
     100% {
       transform: translateX(100%);
     }
@@ -565,16 +555,25 @@ main {
   width: 100%;
   height: 100%;
   margin-bottom: 1rem;
+  aspect-ratio: 16 / 9;
 
   @extend %rounded;
-
-  &.youtube {
-    aspect-ratio: 16 / 9;
-  }
 
   &.twitch {
     aspect-ratio: 310 / 189;
   }
+
+  &.file {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    margin-bottom: 0;
+  }
+
+  @extend %img-caption;
 }
 
 /* --- buttons --- */
@@ -657,12 +656,12 @@ main {
 
 .left {
   float: left;
-  margin: 0.75rem 1rem 1rem 0 !important;
+  margin: 0.75rem 1rem 1rem 0;
 }
 
 .right {
   float: right;
-  margin: 0.75rem 0 1rem 1rem !important;
+  margin: 0.75rem 0 1rem 1rem;
 }
 
 /* --- Overriding --- */
@@ -837,9 +836,11 @@ $btn-mb: 0.5rem;
     padding-right: 1rem;
     margin-bottom: 1.5rem;
 
+    $btn-size: 1.75rem;
+
     %button {
-      width: 1.75rem;
-      height: 1.75rem;
+      width: $btn-size;
+      height: $btn-size;
       margin-bottom: $btn-mb; // multi line gap
       border-radius: 50%;
       color: var(--sidebar-btn-color);
@@ -866,7 +867,7 @@ $btn-mb: 0.5rem;
     }
 
     i {
-      line-height: 1.75rem;
+      line-height: $btn-size;
     }
 
     .mode-toggle {
@@ -1145,10 +1146,6 @@ search {
 #tail-wrapper {
   > :not(script) {
     margin-top: 3rem;
-  }
-
-  > :only-child {
-    margin-top: 0;
   }
 }
 

@@ -13,7 +13,7 @@ render_with_liquid: false
 
 postgreSQL 의 물리적 구조는 다음과 같다.
 
-<img src = "https://severalnines.com/sites/default/files/blog/node_5122/image17.jpg" width=500>
+<img src = "https://severalnines.com/sites/default/files/blog/node_5122/image17.jpg" width=500 alt="물리적 구조">
 
 참고 : https://severalnines.com/blog/understanding-postgresql-architecture/
 
@@ -51,7 +51,7 @@ PostgreSQL에는 네 가지 프로세스 유형 (PostMaster, Background, Backend
 ### 1. PostMaster 프로세스
 PostgreSQL을 기동할 때 가장 먼저 시작되는 프로세스이다.
 
-<img src = "https://severalnines.com/sites/default/files/blog/node_5122/image2.jpg" width="300"/>
+<img src = "https://severalnines.com/sites/default/files/blog/node_5122/image2.jpg" width="300" alt="PostMaster"/>
 
 역할
 - Shared Memory 영역을 할당하며 다양한 **백그라운드 프로세스를 시작**한다.

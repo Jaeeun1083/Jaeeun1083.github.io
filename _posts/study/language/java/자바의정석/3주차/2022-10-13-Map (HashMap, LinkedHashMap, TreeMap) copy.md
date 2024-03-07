@@ -103,7 +103,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
 - 이는 해시 함수가 얼마나 해시 충돌을 회피하도록 잘 구현되었느냐에 상관없이 발생할 수 있는 또 다른 종류의 해시 충돌이다.
 - 이렇게 해시 충돌이 발생하더라도 키-값 쌍 데이터를 잘 저장하고 조회할 수 있게 하는 방식에는 대표적으로 두 가지가 있는데, 하나는 **Open Addressing**이고, 다른 하나는 **Separate Chaining**이다.
 
-  <img src="https://d2.naver.com/content/images/2015/06/helloworld-831311-4.png" width=600>
+  <img src="https://d2.naver.com/content/images/2015/06/helloworld-831311-4.png" width=600 alt="해시 충돌 해결 방식">
 
   - **Open Addressing**은 데이터를 삽입하려는 해시 버킷이 이미 사용 중인 경우 다른 해시 버킷에 해당 데이터를 삽입하는 방식이다. 
   - **Separate Chaining**에서 각 배열의 인자는 인덱스가 같은 해시 버킷을 연결한 링크드 리스트의 첫 부분(head)이다. 이때 **자바 8 이후부터는 데이터의 개수가 많아지면, Separate Chaining에서 링크드 리스트 대신 트리를 사용**한다.
